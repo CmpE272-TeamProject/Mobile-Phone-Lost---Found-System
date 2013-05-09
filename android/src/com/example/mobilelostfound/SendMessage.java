@@ -2,12 +2,12 @@ package com.example.mobilelostfound;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
@@ -21,6 +21,8 @@ import com.amazonaws.services.dynamodbv2.model.GetItemRequest;
 import com.amazonaws.services.dynamodbv2.model.GetItemResult;
 import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
 import com.amazonaws.services.dynamodbv2.model.PutItemResult;
+import com.amazonaws.services.dynamodbv2.model.ScanRequest;
+import com.amazonaws.services.dynamodbv2.model.ScanResult;
 
 /* This class provides the functionality to send the message to DynamoDB
  * from where the web application will fetch and display the message
@@ -32,7 +34,7 @@ class SendMessage extends AsyncTask<String, Void, GetItemResult>
 	private Context 			context;
     private AmazonDynamoDBClient iClient;
     public Activity 			activityName;
-    private String imeiNumber;
+ 
         
 	public SendMessage(Context aContext, Activity aActivity) 
 	{
@@ -41,13 +43,18 @@ class SendMessage extends AsyncTask<String, Void, GetItemResult>
    
     }
 	
+	/*
+	 * (non-Javadoc)
+	 * @see android.os.AsyncTask#doInBackground(Params[])
+	 * This module does the work of adding the data to the 'messages' table 
+	 * in dynamoDB. It adds the IMEI, longitude, latitude,date, time, timestamp
+	 * (hash key, in milliseconds) and message. 
+	 */ 
 			
 	@Override
 	protected GetItemResult doInBackground(String... params) {
-		// TODO Auto-generated method stub
 		String milliSecStr = String.valueOf(getMilliSecond());
-		imeiNumber = params[0];
-		
+				
 		try {
             Map<String, AttributeValue> TableContent = new HashMap<String, AttributeValue>();
             TableContent.put(Constants.HASH_KEY_NAME, new AttributeValue().withN(milliSecStr));
@@ -72,14 +79,14 @@ class SendMessage extends AsyncTask<String, Void, GetItemResult>
             PutItemResult addResult = iClient.putItem(putContent);
           
         } catch (AmazonServiceException ase) {
-            System.err.println("Create items failed.");
+            Log.v("Add", "Create items failed.");
         } 
 		
 		return null;
 	}
 	
-	/*Instantiating AWS service
-	 * returns void
+	/*Instantiating AWS service using the credentials provided in Constants.java
+	 * Returns void
 	 */
 	
 	 private void createClient() throws Exception {	    	
@@ -93,16 +100,8 @@ class SendMessage extends AsyncTask<String, Void, GetItemResult>
 		{
 			super.onPostExecute(aResultItem);
 			displaySentMessage();
-		/*	try {             	
-				String emailAddress = getEmailAddress();
-                GmailSender sender = new GmailSender("mobile.lostfound@gmail.com", "cmpe272group5");
-                sender.sendMail("This is Subject",   
-                        "This is Body",   
-                        "mobile.lostfound@gmail.com",   
-                        "ramya.machina@gmail.com");   
-            } catch (Exception e) {   
-                Log.e("SendMail", e.getMessage(), e);   
-            } */
+			
+			// Close the activity and come back to previous screen
 			activityName.finish();
 		}
 	 
@@ -115,46 +114,7 @@ class SendMessage extends AsyncTask<String, Void, GetItemResult>
 			toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 80);
 			toast.show();    
 		}
-		
-		private String getUserName()
-		{
-			
-		}
-	 
-	 private String getEmailAddress() {
-		// TODO Auto-generated method stub
-		 try {
-	            
-				HashMap<String, AttributeValue> key = new HashMap<String, AttributeValue>();
-				key.put(Constants.IMEI, new AttributeValue().withS(imeiNumber));
-								
-				GetItemRequest getItemRequest = new GetItemRequest()
-								                .withTableName(Constants.TABLE_NAME_USER)
-								                .withKey(key)
-								                .withAttributesToGet(Constants.EMAIL); 
-				try
-	            {
-	            	createClient();
-	            }
-	            catch (Exception ase) {
-	            	Log.e("Error", "Amazon DynamoDB client creation failed." + ase);
-	                
-	            }
-	            
-				GetItemResult resultItem = iClient.getItem(getItemRequest);
-				Map<String, AttributeValue> emailAddress = resultItem.getItem();
-				for (Map.Entry<String, AttributeValue> item : emailAddress.entrySet()) {
-		            String attributeName = item.getKey();
-		            AttributeValue value = item.getValue();
-				}
-		 }  catch (Exception ase) {
-	            System.err.println("Failed to retrieve item in " + Constants.TABLE_NAME_USER);
-	            return null;
-	        }
-		 	return null;
-		 
-	}
-	 
+	
 	 /* To get the timestamp in milliseconds
 	  * Returns long
 	  */
