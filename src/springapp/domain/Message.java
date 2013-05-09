@@ -1,5 +1,8 @@
 package springapp.domain;
 
+/**
+* Java Bean to hold the Message Details for a IMEI Number.
+*/
 public class Message {
 
     private String message;
