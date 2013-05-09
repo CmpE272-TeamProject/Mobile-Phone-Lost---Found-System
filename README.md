@@ -14,6 +14,7 @@ Mobile Install consists of steps needed to run the application on an android ena
 Both Installs are needed to get the application working.
 
 Browser Install
+
 1.	Install tomcat.
 2.	In the build.properties file change the path of appserver.home to the directory where your tomacat is install.
 appserver.home=${user.home}/<path to tomcat directory>
@@ -52,12 +53,14 @@ Mobile Install
    Run the command: adb install example.apk
 
 Mobile Device Settings
+
 1) Enable 4G and GPS in your mobile.
 2) Click on the application icon from the Home Screen.
 3) Click on Notify.
 4) Enter the message and click on Send button.
 
 Sample Run
+
 1) You should receive an email(provided in Mobile Lost & Found web application, available in 'userdetails' table on signup) from mobile.lostfound@gmail.com.
 2) The message with longitude, latitude, date-time and IMEI of the device will be sent to the 'messages' table in DynamoDB.
 3) This can be viewed through Mobile Lost & Found web application with the google map.
