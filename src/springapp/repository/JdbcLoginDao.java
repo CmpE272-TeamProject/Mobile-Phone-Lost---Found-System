@@ -71,10 +71,7 @@ public class JdbcLoginDao extends SimpleJdbcDaoSupport implements LoginDao {
 
     }
 
-
-    @Override
     public User getUserDetails(String username) {
-        // TODO Auto-generated method stub
         return null;
     }
 

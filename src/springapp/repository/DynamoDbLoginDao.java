@@ -25,8 +25,8 @@ public class DynamoDbLoginDao implements LoginDao {
     {
         System.out.println("DynamoDbLoginDao constructor()");
         
-        String accessKey = "AKIAJZ5EU4EXKKBFX5JQ";
-        String secretKey = "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";
+        String accessKey = "AKIAJZ5EU4EXKKB45FX5JQ";
+        String secretKey = "go3juQyjzQI55PVvS4q/8QYpV2FV9Ln6EdjyqsFrhH";
         AWSCredentials awsCredential = new BasicAWSCredentials(accessKey, secretKey);
         
         amazonDynamoDBClient = new AmazonDynamoDBClient(awsCredential);

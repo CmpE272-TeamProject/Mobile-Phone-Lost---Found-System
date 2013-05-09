@@ -17,7 +17,7 @@ h1 {
 }
 
 .error {
-	color: #ff0000;
+	color: #900000;
 }
 
 .errorblock {
@@ -32,29 +32,9 @@ h1 {
 	var submitted = 0;
 
 	function formvalidation() {
-		
 		var form = document.getElementById('loginForm');
 		form.submit();
-		/*
-		var userName = document.getElementById('username').value;
-		var password = document.getElementById('password').value;
-		
-		if ((userName == null || userName == "")
-				&& (password == null || password == "")) {
-			alert("Please enter the username and password !!!");
-			return false;
-		} else if (userName == null || userName == "") {
-			alert("Please enter the username !!!");
-			return false;
-		} else if (password == null || password == "") {
-			alert("Please enter the password !!!");
-			return false;
-		}
-		else
-		{
-			
-		}
-		*/
+	
 	}
 </script>
 
@@ -82,7 +62,7 @@ h1 {
 		<div class="container">
 		<table width="70%" align="center" border="0" cellspacing="0" cellpadding="5" style="background-color: #F8F8F8 ;">
 			<tr>
-				<td align="center" style="color: #0000FF; font-size: 20pt"><b>
+				<td align="center" style="color: #4682B4; font-size: 20pt"><b>
 					<fmt:message key="login.heading" /></b>
 				</td>
 			</tr>
@@ -95,20 +75,20 @@ h1 {
 						<tr>
 							<td align="right" width="70%">
 								<font color="#4682B4"><b>Enter Username	</b></font>
-									<font color="red">(*)</font> 
+									<font color="#900000">(*)</font> 
 									<form:input path="username" />
 							</td>
-							<td width="30%">
+							<td width="30%" align="center">
 								<form:errors path="username" cssClass="error" />
 							</td>
 						</tr>
 						<tr>
 							<td align="right" width="60%">
 								<font color="#4682B4"><b>Enter Password</b></font>
-									<font color="red">(*)</font>
+									<font color="#900000">(*)</font>
 									<form:password path="password" />
 							</td>
-							<td width="40%"><form:errors path="password"
+							<td width="40%" align="center"><form:errors path="password"
 									cssClass="error" /></td>
 						</tr>
 					</table>
@@ -117,9 +97,9 @@ h1 {
 
 			<tr width="100%">
 				<td align="center" width="100%">
-					<button class="btn btn-primary" type="submit" id="Sign-In">Sign-In</button>
+					<button class="btn btn-primary" type="submit" id="Sign-In" onclick="formvalidation()">Sign-In</button>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="<c:url value="register.htm"/>">Create new account</a>
+					<a href="register.htm">Create new account</a>
 				<td>
 			</tr>
 		</table>

@@ -8,9 +8,6 @@ import springapp.repository.LoginDao;
 
 public class SimpleLoginManager implements LoginManager {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
     private LoginDao loginDao;
 

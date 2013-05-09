@@ -16,17 +16,6 @@ public class LoginValidator implements Validator {
     }
     
     
-
-    /*public void validate(Object obj, Errors errors) {
-        Login pi = (Login) obj;
-        if (pi.getUsername() == null || pi.getUsername() == "") {
-            errors.rejectValue("login", "error.username-not-specified", null, "Username required.");
-        }
-        if (pi.getPassword() == null || pi.getPassword() == "") {
-            errors.rejectValue("login", "error.password-not-specified", null, "Passowrd required.");
-        }
-    }*/
-    
     public void validate(Object target, Errors errors) 
     {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "required.username");

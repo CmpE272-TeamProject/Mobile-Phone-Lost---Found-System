@@ -27,7 +27,7 @@ public class LoginController extends SimpleFormController {
     private LoginManager loginManager;
     private MessageManager messageManager;
 
-    public ModelAndView onSubmit(Object command) throws ServletException {
+    public ModelAndView onSubmit(Object command) throws Exception {
 
         String username = ((Login) command).getUsername();
         String password = ((Login) command).getPassword();
@@ -37,34 +37,46 @@ public class LoginController extends SimpleFormController {
         
         boolean isvalid = false;
         
-        if(username != null && !username.equalsIgnoreCase("") && password != null && !password.equalsIgnoreCase(""))
-        	isvalid = loginManager.validLogin(username, password);
-
-        if(isvalid)
-        {
-        	System.out.println("Is valid");
-        	User user = loginManager.getUserDetails(username);
-        	
-            List<Message> messages = messageManager.getMessages(user.getImeiNumber());
-            
-            Map<String, Object> myModel = new HashMap<String, Object>();
-            myModel.put("messages", messages);
-            
-            ModelAndView modelAndView = new ModelAndView("messages","model",myModel);
-            
-            return modelAndView;
-        }
-        else
-        {
-        	
-        	System.out.println("Is invalid");
-        	Map<String, Object> myModel = new HashMap<String, Object>();
-            myModel.put("invalid", "Invalid Username or Passowrd");
-            
-            ModelAndView modelAndView = new ModelAndView("login","model",myModel);
-            
-            return modelAndView;
-        }
+        
+      
+        	if(username != null && !username.equalsIgnoreCase("") && password != null && !password.equalsIgnoreCase(""))
+            	isvalid = loginManager.validLogin(username, password);
+        
+	        ModelAndView modelAndView = null;
+	        	
+	       	try{ 	
+	        	if(isvalid)
+	            {
+	            	System.out.println("Is valid");
+	            	User user = loginManager.getUserDetails(username);
+	            	
+	                List<Message> messages = messageManager.getMessages(user.getImeiNumber());
+	                
+	                Map<String, Object> myModel = new HashMap<String, Object>();
+	                myModel.put("messages", messages);
+	                
+	                 modelAndView = new ModelAndView("messages","model",myModel);
+	                
+	            }
+	            else
+	            {
+	            	
+	            	System.out.println("Is invalid");
+	            	Map<String, Object> myModel = new HashMap<String, Object>();
+	                myModel.put("invalid", "Invalid Username or Passowrd");
+	                
+	                 modelAndView = new ModelAndView("login","model",myModel);
+	                
+	                
+	            }
+	        }
+	        catch (Exception e){
+	        	System.out.println("LoginController:::An exception occured while "
+	        			+ "checking the user authentication" + e.getStackTrace());
+	        }
+	        
+	        return modelAndView;
+        
     }
 
     protected Object formBackingObject(HttpServletRequest request) throws ServletException {

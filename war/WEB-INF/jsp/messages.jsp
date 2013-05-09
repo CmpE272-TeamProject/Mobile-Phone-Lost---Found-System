@@ -63,12 +63,6 @@
 				<td width=40%" align="center" valign="top">
 					<div id="container" class="container" >
 						<table width="70%" align="center" border="0" cellspacing="0" cellpadding="5" style="background-color: #F8F8F8 ;">    
-						    <!--  <tr>
-								<td align="center" style="color: #336633; font-size: 20pt"><b>
-									<fmt:message key="messagePage.heading" /></b>
-								</td>
-							</tr> -->
-								    
 							 <c:if test="${model.messages !=null}">
 							    <tr><td>
 								    <table width="100%" border="2" cellpadding="5">
@@ -111,8 +105,7 @@
 								    
 								<tr>
 								    <td width="100%" colspan=2 align="center" style="color: #008080; font-size: 18pt">
-								    <!-- <input type="submit" align="center" class="btn btn-primary" value="Logout"></td> -->
-								      <a href="login.htm">Logout</a>
+								    <a href="login.htm">Logout</a>
 								    </td>
 						    	</tr>
 						</table>

@@ -22,7 +22,7 @@ table.background {
 }
 
 .error {
-	color: #ff0000;
+	color: #900000;
 }
 
 .errorblock {
@@ -58,14 +58,16 @@ table.background {
   		<td align="center" style="color: #4682B4; font-size: 20pt"><b>
 						<fmt:message key="registrationPage.heading" /></b>
 		</td>
-		<td valign="top" style="color: #4682B4; font-size:10pt">
-			<b><a href="<c:url value="login.htm"/>">Home</a></b>
+		<td valign="top" style="color: #4682B4; font-size:12pt">
+			<b><u><a href="login.htm">Home</a></u></b>
 		</td>
 	</tr>
+	
 	<tr>	        
-	       	<td align="center" style="color:red; font-size: 14pt"><b><u>
-						(*) : Are mandatory fields</u></b>
-			</td>
+	    <td align="center" style="color:#900000 ; font-size: 10pt"><b>
+			(*) : Are mandatory fields</b>
+			<br/><br/>
+		</td>
   	</tr>
 			<tr>
 				<td>
@@ -73,7 +75,7 @@ table.background {
 						<tr>
 							<td align="right" width="70%">
 								<font color="#4682B4"><b>Enter Username	</b></font>
-									<font color="red">(*)</font> 
+									<font color="900000">(*)</font> 
 									<form:input path="username" />
 							</td>
 							<td width="30%">
@@ -83,7 +85,7 @@ table.background {
 						<tr>
 							<td align="right" width="60%">
 								<font color="#4682B4"><b>Enter Password</b></font>
-									<font color="red">(*)</font>
+									<font color="900000">(*)</font>
 									<form:password path="password" />
 							</td>
 							<td width="40%"><form:errors path="password"
@@ -92,7 +94,7 @@ table.background {
 						<tr>
 							<td align="right" width="60%">
 								<font color="#4682B4"><b>Enter IMEI Number</b></font>
-									<font color="red">(*)</font>
+									<font color="900000">(*)</font>
 									<form:input path="imeiNumber" />
 							</td>
 							<td width="40%"><form:errors path="imeiNumber"
@@ -101,17 +103,18 @@ table.background {
 						<tr>
 							<td align="right" width="60%">
 								<font color="#4682B4"><b>Enter Email Address</b></font>
-									<font color="red">(*)</font> 
+									<font color="900000">(*)</font> 
 									<form:input path="emailAddress" />
 							</td>
 							<td width="40%"><form:errors path="emailAddress"
 									cssClass="error" /></td>
 						</tr>
+						
 					</table>
 				</td>
 			</tr>
-
-
+			
+			<br/><br/>
 			<tr>
 				<td width="100%" align="center">
 				<input type="submit" align="center" class="btn btn-primary" value="Register"></td>

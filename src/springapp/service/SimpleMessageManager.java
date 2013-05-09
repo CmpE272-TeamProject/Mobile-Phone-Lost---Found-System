@@ -8,9 +8,6 @@ import springapp.repository.MessageDao;
 
 public class SimpleMessageManager implements MessageManager {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
     private MessageDao messageDao;
 
