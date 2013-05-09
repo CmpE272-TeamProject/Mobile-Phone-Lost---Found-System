@@ -1,5 +1,9 @@
 package springapp.domain;
 
+/**
+* This is bean to store the User details.
+*/
+
 public class User {
 	
     private String username;
