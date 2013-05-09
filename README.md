@@ -33,6 +33,7 @@ http://localhost:8080/springapp/login.htm
 8. Ensure that the database services in the DynamoDb account for the application are up and running, and the userdetails and messages tables are available which are required for using the Mobile Lost & Found application.
 
 Mobile Install
+
 1. Download and install the Android SDK from the website: http://developer.android.com/sdk/index.html
 2. If you have not downloaded SDK ADT bundle, install compatible eclipse IDE
 3. Ensure you have the AWS account for DynamoDB. If not, create one and have a access to the tables in it.
