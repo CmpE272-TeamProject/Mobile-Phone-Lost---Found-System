@@ -33,18 +33,18 @@ http://localhost:8080/springapp/login.htm
 8. Ensure that the database services in the DynamoDb account for the application are up and running, and the userdetails and messages tables are available which are required for using the Mobile Lost & Found application.
 
 Mobile Install
-1) Download and install the Android SDK from the website: http://developer.android.com/sdk/index.html
-2) If you have not downloaded SDK ADT bundle, install compatible eclipse IDE
-3) Ensure you have the AWS account for DynamoDB. If not, create one and have a access to the tables in it.
-3) Import the project into the eclipse.
-4) Add the jars aws-android-sdk-1.5.0.jar for communicating with AWS dynamoDB into the build path
-5) Add the jars, activation.jar, additionnal.jar, mail.jar. Theses are required for sending an email to the mobile owner using Gmail SMTP server.
-6) After adding the above three jars to the build path, it is important to set the order of them. 
+1. Download and install the Android SDK from the website: http://developer.android.com/sdk/index.html
+2. If you have not downloaded SDK ADT bundle, install compatible eclipse IDE
+3. Ensure you have the AWS account for DynamoDB. If not, create one and have a access to the tables in it.
+4. Import the project into the eclipse.
+5. Add the jars aws-android-sdk-1.5.0.jar for communicating with AWS dynamoDB into the build path.
+6. Add the jars, activation.jar, additionnal.jar, mail.jar. Theses are required for sending an email to the mobile owner using Gmail SMTP server.
+7. After adding the above three jars to the build path, it is important to set the order of them. 
    All 3 jars must be placed on top of other jars(like android.jar, android-support-v4.jar, aws-android-sdk-1.5.0.jar etc)
-7) For the first time, select the application and run as-> android application.
-8) Connect the device into the laptop and run the code. Select the device as target in the Avd manager.
+8. For the first time, select the application and run as-> android application.
+9. Connect the device into the laptop and run the code. Select the device as target in the Avd manager.
    To run the code, go to Run -> Run Configuration -> select the device from AVD manager.
-9) Otherwise, the built .apk can be directly installed into the phone following the below steps :
+10. Otherwise, the built .apk can be directly installed into the phone following the below steps :
    Press Win+R > cmd
    Navigate to platform-tools\ in the android-sdk folder 
    type adb
