@@ -34,6 +34,7 @@ http://localhost:8080/springapp/login.htm
 
 Mobile Install
 1. Download and install the Android SDK from the website: http://developer.android.com/sdk/index.html
+
 2. If you have not downloaded SDK ADT bundle, install compatible eclipse IDE
 3. Ensure you have the AWS account for DynamoDB. If not, create one and have a access to the tables in it.
 4. Import the project into the eclipse.
